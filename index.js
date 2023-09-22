@@ -1,13 +1,49 @@
+const getElement=(querry)=>{
+    return document.querySelectorAll(querry);
+}
 const menuOpen=document.querySelector('.nav-btn span:nth-child(3)');
 const navList=document.querySelector('.nav-list');
 const menuClose=document.querySelector('.nav-list li span')
-const listItems=document.querySelectorAll('.nav-list li');
+const listItems=getElement('.nav-list li');
 const darkModeBtn=document.getElementsByClassName('dark')[0];
 const lightModeBtn=document.getElementsByClassName('light')[0];
-const dropdown=document.querySelectorAll('.dropdown-heading');
-const dropdownList=document.querySelectorAll('.dropdown-list');
-const dropBtn=document.querySelectorAll('.btn');
+const dropdown=getElement('.dropdown-heading');
+const dropdownList=getElement('.dropdown-list');
+const dropBtn=getElement('.btn');
+const educationList=getElement('.item1');
+const scoreList=getElement('.item2');
+const qualificationBtn=getElement('.button');
+let currentTab=qualificationBtn[0];
+currentTab.classList.add('active');
+educationList.forEach(item=>item.classList.add('active'));
 
+
+qualificationBtn.forEach((item)=>{
+    item.addEventListener('click',(e)=>{
+        if(currentTab!==item){
+            currentTab.classList.remove('active');
+            if(currentTab.classList.contains('education')){
+                scoreList.forEach((item)=>{
+                    item.classList.add('active');
+                })
+                educationList.forEach((item)=>{
+                    item.classList.remove('active');
+                })
+                currentTab=qualificationBtn[1];
+            }
+            else{
+                educationList.forEach((item)=>{
+                    item.classList.add('active');
+                })
+                scoreList.forEach((item)=>{
+                    item.classList.remove('active');
+                })
+                currentTab=qualificationBtn[0];
+            }
+            currentTab.classList.add('active');
+        }
+    })
+})
 menuOpen.addEventListener('click',(e)=>{
     navList.classList.add('active');
     menuClose.classList.add('active');
