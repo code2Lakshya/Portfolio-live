@@ -14,9 +14,12 @@
     --sub-text-color: #919095;
 }
 
-body {
+body{
     color: var(--text-color);
     background-color: var(--bg-color);
+}
+::selection{
+    background-color: #aeacac;
 }
 
 .container {
@@ -474,7 +477,7 @@ navbar a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -497,11 +500,11 @@ navbar a:hover {
 
 .details-item:nth-child(1) .item span,
 .details-item:nth-child(3) .item span {
-    right: -7.5px;
+    right: -6px;
 }
 
 .details-item:nth-child(2) .item span {
-    left: -7.5px;
+    left: -7px;
 }
 
 .details-item .item {
@@ -514,8 +517,7 @@ navbar a:hover {
     transform: translateX(-2px);
 }
 
-#detail-item1,
-#detail-item3 {
+#detail-item1 {
     border-right: 2px solid #6E57E0;
 }
 
@@ -540,8 +542,8 @@ navbar a:hover {
 .date p{
     margin-top: 2px;
 }
-.item2 p {
-    margin-top: 4px;
+.item2 p:nth-child(3) {
+    margin-top: 15px;
 }
 
 .item1>p,
@@ -566,6 +568,8 @@ navbar a:hover {
 .item2.active {
     display: inline-block;
 }
+
+/* Project section Styling */
 
 
 
@@ -760,5 +764,8 @@ navbar a:hover {
 
     #content h1 {
         font-size: 30px;
+    }
+    .details{
+        width: 100%;
     }
 }
