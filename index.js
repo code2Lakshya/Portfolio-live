@@ -20,6 +20,8 @@ const card = getElement('.project-card');
 const left = getElement('.fa-chevron-left')[0];
 const right = getElement('.fa-chevron-right')[0];
 let c=0;
+const slideBtn=getElement('.project-footer span');
+
 qualificationBtn.forEach((item) => {
     item.addEventListener('click', (e) => {
         if (currentTab !== item) {
@@ -88,19 +90,56 @@ dropdown.forEach((item) => {
         }
     });
 })
-left.addEventListener('click', () => {
+const leftSlide=() => {
+    console.log('left');
     if(c>0){
             card.forEach(item => {
                 item.style.transform = `translateX(-${c-1}00%)`;
             })
+            slideBtn[c].classList.remove('active');
             c--;
+            slideBtn[c].classList.add('active');
         }
-})
-right.addEventListener('click', () => {
+        else{
+            card.forEach(item => {
+                item.style.transform = `translateX(-300%)`;
+            })
+            slideBtn[c].classList.remove('active');
+            c=3;
+            slideBtn[c].classList.add('active');
+        }
+};
+left.addEventListener('click', leftSlide);
+const rightSlide=() => {
     if(c<3){
         card.forEach(item => {
             item.style.transform = `translateX(-${c+1}00%)`;
         })
-        c++;
+        slideBtn[c].classList.remove('active');
+            c++;
+            slideBtn[c].classList.add('active');
     }
+    else{
+        card.forEach(item => {
+            item.style.transform = `translateX(0)`;
+        })
+        slideBtn[c].classList.remove('active');
+        c=0;
+        slideBtn[c].classList.add('active');
+    }
+};
+right.addEventListener('click', rightSlide);
+slideBtn.forEach(item=>{
+    item.addEventListener('click',(e)=>{
+        const current=e.target.getAttribute('data-num');
+        if(current!==c){
+            card.forEach(element=>{
+                element.style.transform=`translateX(-${current}00%)`;
+            })
+            slideBtn[c].classList.remove('active');
+            c=current;
+            slideBtn[c].classList.add('active');
+        }
+    })
 })
+setInterval(rightSlide,7000);
