@@ -20,14 +20,11 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     width: 100vw;
+    overflow-x: hidden;
 }
 
 ::selection {
     background-color: #aeacac;
-}
-
-.container {
-    overflow-x: hidden;
 }
 
 /* Navbar styling */
