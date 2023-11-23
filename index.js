@@ -94,7 +94,6 @@ dropdown.forEach((item) => {
     });
 })
 const leftSlide=() => {
-    console.log('left');
     if(c>0){
             card.forEach(item => {
                 item.style.transform = `translateX(-${c-1}00%)`;
@@ -148,7 +147,6 @@ slideBtn.forEach(item=>{
 setInterval(rightSlide,7000);
 
 window.addEventListener('scroll',()=>{
-    console.log(window.scrollY);
     window.scrollY>540 ? scroller.classList.add('active'): scroller.classList.remove('active');
 })
 scroller.addEventListener('click',()=>{
